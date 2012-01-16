@@ -1,0 +1,27 @@
+Goals
+
+The initial goal is to create a more robust version of devmem2 [1].
+
+devmem2 shortcomings:
+* Not easy to parse for scripts
+* Can't read multiple words
+* Can't dump regions to memory
+
+Would be nice if it was modular so that it can be expanded to support
+i2c and SPI.
+
+
+
+
+[1] http://www.lartmaker.nl/lartware/port/devmem2.c
+
+Usage: devmem3 [options] <addr> [ type [data] ]
+       devmem3 [options] -c <cmd>
+
+Options:
+	-m <module> where default is devmem
+	-c <cmd> command specific to module, try "-c help"
+	
+
+Type: access operation type: [b]yte, [h]alfword, [w]ord
+Data: data to be written
