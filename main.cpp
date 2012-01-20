@@ -18,7 +18,7 @@
 
 #include <argp.h>
 
-#include "CDevMemModule.h"
+#include "CModuleMem.h"
 
 using namespace std;
 
@@ -148,7 +148,7 @@ static struct argp argp = { options, parse_opt, args_doc, devmem3 };
 
 int main (int argc, char **argv)
 {
-	IDevMemModule *mod;
+	IModule *mod;
 	Arguments args;
 
 	argp_parse (&argp, argc, argv, 0, 0, &args);
@@ -170,7 +170,7 @@ int main (int argc, char **argv)
 		printf("OUTPUT_FILE = %s\n", args.outputFile.c_str());
 	}
 
-	mod = new CDevMemModule();
+	mod = new CModuleMem();
 
 	mod->Configure(args);
 	mod->Start();

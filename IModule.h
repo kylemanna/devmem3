@@ -73,10 +73,10 @@ public:
 };
 
 
-class IDevMemModule
+class IModule
 {
 public:
-	virtual ~IDevMemModule() {};
+	virtual ~IModule() {};
 
 	virtual StatusType Configure(Arguments& params) = 0;
 	virtual StatusType Unconfigure(Arguments& params) = 0;
@@ -99,5 +99,3 @@ public:
 protected:
 	Arguments args;
 };
-
-/* vim: set ts=4 sw=4 et: */
