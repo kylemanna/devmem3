@@ -1,7 +1,7 @@
 PROG := devmem3
-OBJS := main.o CModuleMem.o
+OBJS := main.o DeviceMemory.o
 
-CFLAGS := -I.
+CXXFLAGS := -I. -I../include
 
 # Support cross compilers
 CC := $(CROSS_COMPILE)-gcc

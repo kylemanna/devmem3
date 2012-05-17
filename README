@@ -8,7 +8,7 @@ devmem2 shortcomings:
 * Can't dump regions to memory
 
 Would be nice if it was modular so that it can be expanded to support
-i2c and SPI.
+I2C, SPI, CAN, protected EEPROMs, etc.
 
 
 

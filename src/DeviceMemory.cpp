@@ -5,9 +5,9 @@
  *      Author: nitro
  */
 
-#include "CModuleMem.h"
+#include "DeviceMemory.h"
 
-StatusType CModuleMem::Start(void)
+StatusType DeviceMemory::start(void)
 {
     if((fd = open("/dev/mem", O_RDWR | O_SYNC)) == -1) FATAL;
     if (args.verbose) {
@@ -29,7 +29,7 @@ StatusType CModuleMem::Start(void)
     return STATUS_SUCCESS;
 }
 
-StatusType CModuleMem::Stop(void)
+StatusType DeviceMemory::stop(void)
 {
 	if(munmap(map_base, MAP_SIZE) == -1) FATAL;
     close(fd);
@@ -37,11 +37,11 @@ StatusType CModuleMem::Stop(void)
     return STATUS_SUCCESS;
 }
 
-StatusType CModuleMem::ReadByte(DataType& d)
+StatusType DeviceMemory::read_byte(DataType& d)
 {
     return STATUS_FAILURE;
 }
-StatusType CModuleMem::ReadWord(DataType& d)
+StatusType DeviceMemory::read_word(DataType& d)
 {
 	printf("reading 0x%p\n", virt_addr);
 	d.buf[0] = *((unsigned char *) virt_addr);
@@ -49,27 +49,27 @@ StatusType CModuleMem::ReadWord(DataType& d)
 
     return STATUS_SUCCESS;
 }
-StatusType CModuleMem::ReadBlock(DataType& d)
+StatusType DeviceMemory::read_block(DataType& d)
 {
     return STATUS_FAILURE;
 }
-StatusType CModuleMem::WriteByte(DataType& d)
+StatusType DeviceMemory::write_byte(DataType& d)
 {
     return STATUS_FAILURE;
 }
-StatusType CModuleMem::WriteWord(DataType& d)
+StatusType DeviceMemory::write_word(DataType& d)
 {
     return STATUS_FAILURE;
 }
-StatusType CModuleMem::WriteBlock(DataType& d)
+StatusType DeviceMemory::write_block(DataType& d)
 {
     return STATUS_FAILURE;
 }
-StatusType CModuleMem::ParseCmd(std::string& s, Arguments& args)
+StatusType DeviceMemory::parse_cmd(std::string& s, Arguments& args)
 {
     return STATUS_FAILURE;
 }
-StatusType CModuleMem::PrintCmd(Arguments& args, std::string& s)
+StatusType DeviceMemory::print_cmd(Arguments& args, std::string& s)
 {
     return STATUS_FAILURE;
 }

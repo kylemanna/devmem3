@@ -1,5 +1,13 @@
-#include <string>
-#include <vector>
+/*
+ * types.h
+ *
+ *  Created on: May 16, 2012
+ *      Author: null
+ */
+
+#ifndef TYPES_H_
+#define TYPES_H_
+
 
 typedef enum StatusTypeEnum {
     STATUS_SUCCESS = 0,
@@ -19,6 +27,12 @@ typedef enum DataOpEnum {
     DATA_OP_CLEAR,
     DATA_OP_SET,
 } DataOpType;
+
+
+typedef enum EndianTypeEnum {
+    ENDIAN_BIG = 0,
+    ENDIAN_LITTLE,
+} EndianType;
 
 
 /*
@@ -73,29 +87,5 @@ public:
 };
 
 
-class IModule
-{
-public:
-	virtual ~IModule() {};
 
-	virtual StatusType Configure(Arguments& params) = 0;
-	virtual StatusType Unconfigure(Arguments& params) = 0;
-
-	virtual StatusType Start(void) = 0;
-	virtual StatusType Stop(void) = 0;
-
-	virtual StatusType ReadByte(DataType& d) = 0;
-	virtual StatusType ReadWord(DataType& d) = 0;
-	virtual StatusType ReadBlock(DataType& d) = 0;
-
-	virtual StatusType WriteByte(DataType& d) = 0;
-	virtual StatusType WriteWord(DataType& d) = 0;
-	virtual StatusType WriteBlock(DataType& d) = 0;
-
-	/* Parse and print options passed from command line */
-	virtual StatusType ParseCmd(std::string& s, Arguments& args) = 0;
-	virtual StatusType PrintCmd(Arguments& args, std::string& s) = 0;
-
-protected:
-	Arguments args;
-};
+#endif /* TYPES_H_ */

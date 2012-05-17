@@ -18,7 +18,7 @@
 
 #include <argp.h>
 
-#include "CModuleMem.h"
+#include "DeviceMemory.h"
 
 using namespace std;
 
@@ -148,7 +148,7 @@ static struct argp argp = { options, parse_opt, args_doc, devmem3 };
 
 int main (int argc, char **argv)
 {
-	IModule *mod;
+	DeviceInterface *dev;
 	Arguments args;
 
 	argp_parse (&argp, argc, argv, 0, 0, &args);
@@ -170,18 +170,18 @@ int main (int argc, char **argv)
 		printf("OUTPUT_FILE = %s\n", args.outputFile.c_str());
 	}
 
-	mod = new CModuleMem();
+	dev = new DeviceMemory();
 
-	mod->Configure(args);
-	mod->Start();
+	dev->configure(args);
+	dev->start();
 
 	DataType d;
-	mod->ReadWord(d);
+	dev->read_word(d);
 
 	printf("Read: 0x%08x\n", d.buf[0]);
 
-	mod->Stop();
-	mod->Unconfigure(args);
+	dev->stop();
+	dev->unconfigure(args);
 
 	return 0;
 }
